@@ -12,7 +12,7 @@ def treat_and_get_any(
     inside: list=None,
     not_inside: list=None,
     required:bool=True,
-    convert:bool=True,
+    convert:bool=False,
     default:Any=None
 )-> Any:
     """This function is used to treat and get a value from a dict or list.
@@ -26,7 +26,7 @@ def treat_and_get_any(
         inside (list, optional): The expected values of the value. Defaults to None.
         not_inside (list, optional): The not expected values of the value. Defaults to None.
         required (bool, optional): If the value is required. Defaults to True.
-        convert (bool, optional): If the value can be converted. Defaults to True.
+        convert (bool, optional): If the value can be converted. Defaults to False.
         default (Any, optional): The default value if the value is not required. Defaults to None.    
     Returns:
         Any: The value treated.
@@ -40,20 +40,18 @@ def treat_and_get_any(
                 if key_or_index == len(data):
                     data.append(default)
             else:
+                element = default
                 data[key_or_index] = default
-            
-            return default
 
-        if required:
+        elif required:
             raise  PySchemaException({
                 'type': 'KeyError',
                 'key_or_index': key_or_index,
                 'data': data,
                 'menssage': f"#key#:'{key_or_index}' not found in #data# '{data}'",
             })
-        else:
-            return None 
-    
+       
+
     if convert and in_types:
         convert = False
 

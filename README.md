@@ -240,7 +240,7 @@ print(adress)
 **inside** (list, optional): The expected values of the value. Defaults to None.
 **not_inside** (list, optional): The not expected values of the value. Defaults to None.
 **required** (bool, optional): If the value is required. Defaults to True.
-**convert** (bool, optional): If the value can be converted. Defaults to True.
+**convert** (bool, optional): If the value can be converted. Defaults to False.
 **default** (Any, optional): The default value if the value is not required. Defaults to None.
 
 
