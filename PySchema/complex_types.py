@@ -1,0 +1,100 @@
+from PySchema.exceptions import PySchemException
+from typing import Any,Union,List,Dict
+from PySchema.any_type import treat_and_get_any
+
+
+
+def treat_and_get_number(
+    data:dict or list,
+    key_or_index:int or str,
+    expected_type:type,
+    expected_value:float or int=None,
+    inside:list=None,
+    not_inside:list=None,
+    required:bool=True,
+    convert:bool=True,
+    default:Any=None,
+    max:float or int=None,
+    min:float or int=None
+
+)-> int or float:
+    """ This function is used to treat and get a number from a dict or list."""
+    value = treat_and_get_any(
+        data=data,
+        key_or_index=key_or_index,
+        expected_type=expected_type,
+        in_types=None,
+        expected_value=expected_value,
+        inside=inside,
+        not_inside=not_inside,
+        required=required,
+        convert=convert,
+        default=default
+    )
+    if value:
+        if max and value > max:
+            raise PySchemException({
+                'type': 'ValueError',
+                'key_or_index': key_or_index,
+                'data': data,
+                'max': max,
+                'menssage': f"Value: '{value}' of #key#: '{key_or_index}' is greater than '{max}' on #data# '{data}'",
+            })
+        if min and value < min:
+            raise  PySchemException({
+                'type': 'ValueError',
+                'key_or_index': key_or_index,
+                'data': data,
+                'min': min,
+                'menssage': f"Value: '{value}' of #key#: '{key_or_index}' is less than '{min}' on #data# '{data}'",
+
+            })
+    return value
+
+
+def treat_and_get_iterable(
+    data: Union[dict,list],
+    key_or_index:Union[int,str],
+    expected_type: type,
+    expected_value: Any=None,
+    inside: list=None,
+    not_inside: list=None,
+    required:bool=True,
+    convert:bool=False,
+    default:Any=None,
+    max_len:int=None,
+    min_len:int=None
+)-> list or str:
+    """ This function is used to treat and get a iterable from a dict or list."""
+    value = treat_and_get_any(
+        data=data,
+        key_or_index=key_or_index,
+        expected_type=expected_type,
+        in_types=None,
+        expected_value=expected_value,
+        inside=inside,
+        not_inside=not_inside,
+        required=required,
+        convert=convert,
+        default=default
+    )
+    if value:
+        if max_len and len(value) > max_len:
+            raise  PySchemException({
+                'type': 'ValueError',
+                'key_or_index': key_or_index,
+                'data': data,
+                'max_len': max_len,
+                'menssage': f"Length of {value} is greater than {max_len}",
+            })
+        if min_len and len(value) < min_len:
+            raise PySchemException({
+                'type': 'ValueError',
+                'key_or_index': key_or_index,
+                'data': data,
+                'min_len': min_len,
+                'menssage': f"Length of {value} is less than {min_len}",
+            })
+
+    return value
+
