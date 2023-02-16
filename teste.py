@@ -14,5 +14,10 @@ user_data = {
     }
 }
 
-adress = PySchema.treat_and_get_dict(user_data, 'address')
+adress = PySchema.treat_and_get_any(
+    data=user_data,
+    key_or_index='address',
+    expected_type=dict,
+)
+
 print(adress)

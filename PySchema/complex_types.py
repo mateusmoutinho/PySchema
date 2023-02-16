@@ -18,7 +18,21 @@ def treat_and_get_number(
     min:float or int=None
 
 )-> int or float:
-    """ This function is used to treat and get a number from a dict or list."""
+    """ This function is used to treat and get a number from a dict or list.
+    Args:
+        data (dict or list): The dict or list to be treated.
+        key_or_index (int or str): The key or index to be treated.
+        expected_type (type): The expected type of the value.
+        expected_value (float or int, optional): The expected value of the value. Defaults to None.
+        inside (list, optional): The expected values of the value. Defaults to None.
+        not_inside (list, optional): The not expected values of the value. Defaults to None.
+        required (bool, optional): If the value is required. Defaults to True.
+        convert (bool, optional): If the value can be converted. Defaults to True.
+        default (Any, optional): The default value if the value is not required. Defaults to None.
+        max (float or int, optional): The max value of the value. Defaults to None.
+        min (float or int, optional): The min value of the value. Defaults to None.
+    
+    """
     value = treat_and_get_any(
         data=data,
         key_or_index=key_or_index,
@@ -65,7 +79,21 @@ def treat_and_get_iterable(
     max_len:int=None,
     min_len:int=None
 )-> list or str:
-    """ This function is used to treat and get a iterable from a dict or list."""
+    """ This function is used to treat and get a iterable from a dict or list.
+    Args:
+        data (dict or list): The dict or list to be treated.
+        key_or_index (int or str): The key or index to be treated.
+        expected_type (type): The expected type of the value.
+        expected_value (Any, optional): The expected value of the value. Defaults to None.
+        inside (list, optional): The expected values of the value. Defaults to None.
+        not_inside (list, optional): The not expected values of the value. Defaults to None.
+        required (bool, optional): If the value is required. Defaults to True.
+        convert (bool, optional): If the value can be converted. Defaults to False.
+        default (Any, optional): The default value if the value is not required. Defaults to None.
+        max_len (int, optional): The max length of the value. Defaults to None.
+        min_len (int, optional): The min length of the value. Defaults to None.
+    """
+    
     value = treat_and_get_any(
         data=data,
         key_or_index=key_or_index,

@@ -17,15 +17,17 @@ def treat_and_get_dict(
 )-> dict:
     """This function is used to treat and get a dict from a dict or list.
     Args:
-        data (Union[dict,list]): The data to be treated.
-        key_or_index:(int or str) key or index to be treated.
-        expected_value (dict): The expected value of the key or index.
-        inside (List[dict]): The expected values of the key or index.
-        not_inside (List[dict]): The expected values of the key or index.
-        required (bool): If the key or index is required.
-        default (dict): The default value if the key or index is not required.
-        max_len (int): The maximum length of the value.
-        min_len (int): The minimum length of the value.
+        data (Union[dict,list]): The dict or list to be treated.
+        key_or_index (Union[int,str]): The key or index to be treated.
+        expected_value (dict, optional): The expected value of the dict. Defaults to None.
+        inside (List[dict], optional): The expected values of the dict. Defaults to None.
+        not_inside (List[dict], optional): The not expected values of the dict. Defaults to None.
+        required (dict, optional): If the dict is required. Defaults to True.
+        default (dict, optional): The default value if the dict is not required. Defaults to None.
+        max_len (int, optional): The max length of the dict. Defaults to None.
+        min_len (int, optional): The min length of the dict. Defaults to None.
+    Returns:
+        dict: The treated dict.
     """
     return treat_and_get_iterable(
         data=data,
@@ -57,17 +59,20 @@ def treat_and_get_str(
     This function is used to treat and get a str from a dict or list.
 
     Args:
+        data (Union[dict,list]): The dict or list to be treated.
+        key_or_index (Union[int,str]): The key or index to be treated.
+        expected_value (str, optional): The expected value of the str. Defaults to None.
+        inside (List[str], optional): The expected values of the str. Defaults to None.
+        not_inside (List[str], optional): The not expected values of the str. Defaults to None.
+        required (bool, optional): If the str is required. Defaults to True.
+        convert (bool, optional): If the str must be converted. Defaults to False.
+        default (str, optional): The default value if the str is not required. Defaults to None.
+        max_len (int, optional): The max length of the str. Defaults to None.
+        min_len (int, optional): The min length of the str. Defaults to None.
+    
+    Returns:
+        str: The treated str.
 
-        data:(dict or list) data to be treated.
-        key_or_index:(int or str) key or index to be treated.
-        expected_value:(str) expected value of the key or index.
-        inside:(List[str]) list of values that the key or index must be inside.
-        not_inside:(List[str]) list of values that the key or index must not be inside.
-        required:(bool) if the key or index is required.
-        convert:(bool) if the key or index must be converted to str.
-        default:(str) default value if the key or index is not required.
-        max_len:(int) max length of the key or index.
-        min_len:(int) min length of the key or index.
     """
     return treat_and_get_iterable(
         data=data,
@@ -97,15 +102,17 @@ def treat_and_get_list(
 )-> list:
     """This function is used to treat and get a list from a dict or list.
     Args:
-        data:(dict or list) data to be treated.
-        key_or_index:(int or str) key or index to be treated.
-        expected_value:(list) expected value of the key or index.
-        inside:(List[list]) list of values that the key or index must be inside.
-        not_inside:(List[list]) list of values that the key or index must not be inside.
-        required:(bool) if the key or index is required.
-        default:(list) default value if the key or index is not required.
-        max_len:(int) max length of the key or index.
-        min_len:(int) min length of the key or index.    
+        data (Union[dict,list]): The dict or list to be treated.
+        key_or_index (Union[int,str]): The key or index to be treated.
+        expected_value (list, optional): The expected value of the list. Defaults to None.
+        inside (List[list], optional): The expected values of the list. Defaults to None.
+        not_inside (List[list], optional): The not expected values of the list. Defaults to None.
+        required (bool, optional): If the list is required. Defaults to True.
+        default (list, optional): The default value if the list is not required. Defaults to None.
+        max_len (int, optional): The max length of the list. Defaults to None.
+        min_len (int, optional): The min length of the list. Defaults to None.
+    Returns:
+        list: The treated list.
     """
     return treat_and_get_iterable(
         data=data,
@@ -138,16 +145,19 @@ def treat_and_get_int(
 
     Args:
     
-        data:(dict or list) data to be treated.
-        key_or_index:(int or str) key or index to be treated.
-        expected_value:(int) expected value of the key or index.
-        inside:(List[int]) list of values that the key or index must be inside.
-        not_inside:(List[int]) list of values that the key or index must not be inside.
-        required:(bool) if the key or index is required.
-        convert:(bool) if the key or index must be converted to int.
-        default:(int) default value if the key or index is not required.
-        max:(int) max value of the key or index.
-        min:(int) min value of the key or index.
+        data (Union[dict,list]): The dict or list to be treated.
+        key_or_index (Union[int,str]): The key or index to be treated.
+        expected_value (int, optional): The expected value of the int. Defaults to None.
+        inside (List[int], optional): The expected values of the int. Defaults to None.
+        not_inside (List[int], optional): The not expected values of the int. Defaults to None.
+        required (bool, optional): If the int is required. Defaults to True.
+        convert (bool, optional): If the int must be converted. Defaults to True.
+        default (int, optional): The default value if the int is not required. Defaults to None.
+        max (int, optional): The max value of the int. Defaults to None.
+        min (int, optional): The min value of the int. Defaults to None. 
+    
+    Returns:
+        int: The treated int.
      """
     return treat_and_get_number(
         data=data,
@@ -178,16 +188,19 @@ def treat_and_get_float(
 )-> float:
     """This function is used to treat and get a float from a dict or list.
     Args:
-        data:(dict or list) data to be treated.
-        key_or_index:(int or str) key or index to be treated.
-        expected_value:(float) expected value of the key or index.
-        inside:(List[float]) list of values that the key or index must be inside.
-        not_inside:(List[float]) list of values that the key or index must not be inside.
-        required:(bool) if the key or index is required.
-        convert:(bool) if the key or index must be converted to float.
-        default:(int) default value if the key or index is not required.
-        max:(int) max value of the key or index.
-        min:(int) min value of the key or index.
+        data (Union[dict,list]): The dict or list to be treated.
+        key_or_index (Union[int,str]): The key or index to be treated.
+        expected_value (float, optional): The expected value of the float. Defaults to None.
+        inside (List[float], optional): The expected values of the float. Defaults to None.
+        not_inside (List[float], optional): The not expected values of the float. Defaults to None.
+        required (bool, optional): If the float is required. Defaults to True.
+        convert (bool, optional): If the float must be converted. Defaults to True.
+        default (float, optional): The default value if the float is not required. Defaults to None.
+        max (float, optional): The max value of the float. Defaults to None.
+        min (float, optional): The min value of the float. Defaults to None.
+    Returns:
+        float: The treated float.
+        
     """
     return treat_and_get_number(
         data=data,

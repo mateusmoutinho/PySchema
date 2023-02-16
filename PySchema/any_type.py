@@ -7,7 +7,7 @@ def treat_and_get_any(
     data: Union[dict,list],
     key_or_index:Union[int,str],
     expected_type: type=None,
-    in_types: list=None,
+    in_types: List[Any]=None,
     expected_value: Any=None,
     inside: list=None,
     not_inside: list=None,
@@ -15,7 +15,22 @@ def treat_and_get_any(
     convert:bool=True,
     default:Any=None
 )-> Any:
-    """This function is used to treat and get a value from a dict or list."""
+    """This function is used to treat and get a value from a dict or list.
+    
+    Args:
+        data (Union[dict,list]): The dict or list to be treated.
+        key_or_index (Union[int,str]): The key or index to be treated.
+        expected_type (type, optional): The expected type of the value. Defaults to None.
+        in_types (List[Any], optional): The expected types of the value. Defaults to None.
+        expected_value (Any, optional): The expected value of the value. Defaults to None.
+        inside (list, optional): The expected values of the value. Defaults to None.
+        not_inside (list, optional): The not expected values of the value. Defaults to None.
+        required (bool, optional): If the value is required. Defaults to True.
+        convert (bool, optional): If the value can be converted. Defaults to True.
+        default (Any, optional): The default value if the value is not required. Defaults to None.    
+    Returns:
+        Any: The value treated.
+    """
     try:
         element = data[key_or_index]
     except Exception:
