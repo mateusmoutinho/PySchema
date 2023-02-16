@@ -3,10 +3,12 @@ PySchema is a Python library that provides functions to treat and validate data 
 
 ### Instalation
 To install PySchema, you can use pip:
-### Instalation from github
+#### Instalation from github
 ~~~bash 
-
+pip install git+https://github.com/mateusmoutinho/PySchema
 ~~~
+
+
 ### Basic Usage 
 #### Getting Values 
 you can get values using the funcions from PySchema for these:
