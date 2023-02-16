@@ -105,6 +105,31 @@ print(age)
 **max:**(int, optional): The max value of the int. Defaults to None.<br>
 **min:**(int, optional): The min value of the int. Defaults to None. <br>
 
+#### Getting Boolean
+for getting booleans with pyschema you can call the **treat_and_get_bool** function
+~~~python
+import PySchema
+user_data = {
+    'name': 'John',
+    'age': 20,
+    'single': True,
+}
+
+single = PySchema.treat_and_get_bool(
+    data=user_data,
+    key_or_index='single',
+)
+print(single)
+~~~
+##### Args:
+**data (Union[dict,list]):** The dict or list to be treated.<br>
+**key_or_index (Union[int,str]):** The key or index to be treated.<br>
+**expected_value (bool, optional):** The expected value of the bool. Defaults to None.<br>
+**required (bool, optional):** If the bool is required. Defaults to True.<br>
+**convert (bool, optional):** If the bool must be converted. Defaults to True.<br>
+**default (bool, optional):** The default value if the bool is not required. Defaults to None.<br>
+
+
 
 #### Getting Floats
 for getting floats with pyschema you can call the **treat_and_get_float** function
