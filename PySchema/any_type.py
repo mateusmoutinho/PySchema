@@ -1,4 +1,4 @@
-from PySchema.exceptions import PySchemException
+from PySchema.exceptions import PySchemaException
 from typing import Any,Union,List,Dict
 
 
@@ -35,7 +35,7 @@ def treat_and_get_any(
         element = data[key_or_index]
     except Exception:
         if required:
-            raise  PySchemException({
+            raise  PySchemaException({
                 'type': 'KeyError',
                 'key_or_index': key_or_index,
                 'data': data,
@@ -57,7 +57,7 @@ def treat_and_get_any(
             element = expected_type(element)
             data[key_or_index] = element
         except ValueError:  
-            raise PySchemException({
+            raise PySchemaException({
                 'type': 'ValueError',
                 'key_or_index': key_or_index,
                 'data': data,
@@ -69,7 +69,7 @@ def treat_and_get_any(
 
 
     if expected_value and element != expected_value:
-        raise PySchemException({
+        raise PySchemaException({
             'type': 'ValueError',
             'key_or_index': key_or_index,
             'data': data,
@@ -78,7 +78,7 @@ def treat_and_get_any(
         })
     
     if inside and element not in inside:
-        raise PySchemException({
+        raise PySchemaException({
             'type': 'ValueError',
             'key_or_index': key_or_index,
             'data': data,
@@ -87,7 +87,7 @@ def treat_and_get_any(
         })
     
     if not_inside and element in not_inside:
-        raise PySchemException({
+        raise PySchemaException({
             'type': 'ValueError',
             'key_or_index': key_or_index,
             'data': data,
@@ -96,7 +96,7 @@ def treat_and_get_any(
         })
     if expected_type:
         if not isinstance(element, expected_type):
-            raise PySchemException({
+            raise PySchemaException({
                 'type': 'TypeError',
                 'key_or_index': key_or_index,
                 'data': data,
@@ -106,7 +106,7 @@ def treat_and_get_any(
             
     if in_types:
         if not any([isinstance(element, type_) for type_ in in_types]):
-            raise PySchemException({
+            raise PySchemaException({
                 'type': 'TypeError',
                 'key_or_index': key_or_index,
                 'data': data,

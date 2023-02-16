@@ -1,23 +1,15 @@
-
 import PySchema
 
 
+
 user_data = {
-    'name': 'John',
-    'age': 60.4,
-    'emails': ['John@myemail.cmm', 'John2@myemail.com'],
-    'address': {
-        'street': 'Rua 1',
-        'number': 10,
-        'city': 'São Paulo',
-        'state': 'SP',
-    }
+    'name': 3,
 }
 
-adress = PySchema.treat_and_get_any(
-    data=user_data,
-    key_or_index='address',
-    expected_type=dict,
-)
 
-print(adress)
+try:
+    name = PySchema.treat_and_get_str(user_data, 'name')
+    print(name)
+except PySchema.PySchemaException as e:
+    print(e.props)
+    

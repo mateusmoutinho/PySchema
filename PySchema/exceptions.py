@@ -1,6 +1,6 @@
 from typing import Any
 
-class PySchemException(Exception):
+class PySchemaException(Exception):
     def __init__(self,props:dict):
         data = props['data']
         

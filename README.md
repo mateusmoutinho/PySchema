@@ -7,6 +7,47 @@ To install PySchema, you can use pip:
 ~~~bash 
 
 ~~~
+### Basic Usage 
+#### Getting Values 
+you can get values using the funcions from PySchema for these:
+~~~python
+import PySchema
+user_data = {
+    'name': 'John',
+}
+name = PySchema.treat_and_get_str(user_data, 'name')
+print(name)
+~~~
+#### Dealing with Errors 
+You can get any part of the error with the following comand 
+
+~~~python
+import PySchema
+
+
+
+user_data = {
+    'name': 3,
+}
+
+
+try:
+    name = PySchema.treat_and_get_str(user_data, 'name')
+    print(name)
+except PySchema.PySchemaException as e:
+    print(e.props)
+~~~
+The Output gonna be:
+~~~python
+{   'type': 'TypeError', 
+    'data': {'name': 3},
+    'expected_type': <class 'str'>,
+    'menssage': "Value: '3' of key: 'name'  is not a 'str' on dict '{'name': 3}'",
+    'key': 'name'
+}
+~~~
+
+
 
 
 ### Getting Values
@@ -201,4 +242,60 @@ print(adress)
 **required** (bool, optional): If the value is required. Defaults to True.
 **convert** (bool, optional): If the value can be converted. Defaults to True.
 **default** (Any, optional): The default value if the value is not required. Defaults to None.
+
+
 ### Iterating over lists
+
+You can iterate over list ,by using the **enumerate** build in method
+
+~~~python
+
+import PySchema
+user_data = {
+    'name': 'John',
+    'age': 60.4,
+    'emails': ['John@myemail.cmm', 'John2@myemail.com'],
+    'address': {
+        'street': 'Rua 1',
+        'number': 10,
+        'city': 'São Paulo',
+        'state': 'SP',
+    }
+}
+emails = PySchema.treat_and_get_list(data=user_data,key_or_index='emails')
+for index,value in enumerate(emails):
+    current_email = PySchema.treat_and_get_str(data=emails,key_or_index=index)
+    print(current_email)
+~~~
+
+#### Dealing with dict in lists 
+You can tread dicts inside least following the exemple:
+
+~~~python
+
+import PySchema
+
+
+user_data = {
+    'name': 'John',
+    'age': 60.4,
+    'emails': ['John@myemail.cmm', 'John2@myemail.com'],
+    'address': [{
+        'street': 'Rua 1',
+        'number': 10,
+        'city': 'São Paulo',
+        'state': 'SP',
+    }]
+}
+
+adresss = PySchema.treat_and_get_list(data=user_data,key_or_index='address')
+for index,value in enumerate(adresss):
+    current_adress = PySchema.treat_and_get_dict(data=adresss,key_or_index=index)
+    
+    street = PySchema.treat_and_get_str(data=current_adress,key_or_index='street')
+    number = PySchema.treat_and_get_int(data=current_adress,key_or_index='number')
+    city = PySchema.treat_and_get_str(data=current_adress,key_or_index='city')
+    state = PySchema.treat_and_get_str(data=current_adress,key_or_index='state')
+    print(street,number,city,state)
+~~~
+

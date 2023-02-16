@@ -1,4 +1,4 @@
-from PySchema.exceptions import PySchemException
+from PySchema.exceptions import PySchemaException
 from typing import Any,Union,List,Dict
 from PySchema.any_type import treat_and_get_any
 
@@ -49,7 +49,7 @@ def treat_and_get_number(
     )
     if value:
         if max and value > max:
-            raise PySchemException({
+            raise PySchemaException({
                 'type': 'ValueError',
                 'key_or_index': key_or_index,
                 'data': data,
@@ -57,7 +57,7 @@ def treat_and_get_number(
                 'menssage': f"Value: '{value}' of #key#: '{key_or_index}' is greater than '{max}' on #data# '{data}'",
             })
         if min and value < min:
-            raise  PySchemException({
+            raise  PySchemaException({
                 'type': 'ValueError',
                 'key_or_index': key_or_index,
                 'data': data,
@@ -112,7 +112,7 @@ def treat_and_get_iterable(
     )
     if value:
         if max_len and len(value) > max_len:
-            raise  PySchemException({
+            raise  PySchemaException({
                 'type': 'ValueError',
                 'key_or_index': key_or_index,
                 'data': data,
@@ -120,7 +120,7 @@ def treat_and_get_iterable(
                 'menssage': f"Length of {value} is greater than {max_len}",
             })
         if min_len and len(value) < min_len:
-            raise PySchemException({
+            raise PySchemaException({
                 'type': 'ValueError',
                 'key_or_index': key_or_index,
                 'data': data,
