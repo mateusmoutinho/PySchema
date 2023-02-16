@@ -34,14 +34,7 @@ def treat_and_get_any(
     try:
         element = data[key_or_index]
     except Exception:
-        if required:
-            raise  PySchemaException({
-                'type': 'KeyError',
-                'key_or_index': key_or_index,
-                'data': data,
-                'menssage': f"#key#:'{key_or_index}' not found in #data# '{data}'",
-            })
-        else:
+        if default is not None:
             #if is a list and the index is the last position
             if isinstance(key_or_index,int):
                 if key_or_index == len(data):
@@ -51,7 +44,23 @@ def treat_and_get_any(
             
             return default
 
+        if required:
+            raise  PySchemaException({
+                'type': 'KeyError',
+                'key_or_index': key_or_index,
+                'data': data,
+                'menssage': f"#key#:'{key_or_index}' not found in #data# '{data}'",
+            })
+        else:
+            return None 
     
+    if convert and in_types:
+        convert = False
+
+    if default and expected_value:
+        default = None
+
+
     if convert and expected_type:
         try:
             element = expected_type(element)
@@ -66,8 +75,6 @@ def treat_and_get_any(
             })
 
  
-
-
     if expected_value and element != expected_value:
         raise PySchemaException({
             'type': 'ValueError',
