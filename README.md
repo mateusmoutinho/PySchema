@@ -259,16 +259,16 @@ adress = PySchema.treat_and_get_any(
 print(adress)
 ~~~
 ### Args:
-**data** (Union[dict,list]): The dict or list to be treated.
-**key_or_index** (Union[int,str]): The key or index to be treated.
-**expected_type** (type, optional): The expected type of the value. Defaults to None.
-**in_types** (List[Any], optional): The expected types of the value. Defaults to None.
-**expected_value** (Any, optional): The expected value of the value. Defaults to None.
-**inside** (list, optional): The expected values of the value. Defaults to None.
-**not_inside** (list, optional): The not expected values of the value. Defaults to None.
-**required** (bool, optional): If the value is required. Defaults to True.
-**convert** (bool, optional): If the value can be converted. Defaults to False.
-**default** (Any, optional): The default value if the value is not required. Defaults to None.
+**data** (Union[dict,list]): The dict or list to be treated.<br>
+**key_or_index** (Union[int,str]): The key or index to be treated.<br>
+**expected_type** (type, optional): The expected type of the value. Defaults to None.<br>
+**in_types** (List[Any], optional): The expected types of the value. Defaults to None.<br>
+**expected_value** (Any, optional): The expected value of the value. Defaults to None.<br>
+**inside** (list, optional): The expected values of the value. Defaults to None.<br>
+**not_inside** (list, optional): The not expected values of the value. Defaults to None.<br>
+**required** (bool, optional): If the value is required. Defaults to True.<br>
+**convert** (bool, optional): If the value can be converted. Defaults to False.<br>
+**default** (Any, optional): The default value if the value is not required. Defaults to None.<br>
 
 
 ### Iterating over lists
