@@ -22,16 +22,16 @@ print(name)
 ~~~
 ##### Getting Args:
 
-**data:** (dict or list) data to be treated.<br>
-**key_or_index:**(int or str) key or index to be treated.<br>
-**expected_value:**(str) expected value of the key or index.<br>
-**inside:**(List[str]) list of values that the key or index must be inside.<br>
-**not_inside:**(List[str]) list of values that the key or index must not be inside.<br>
-**required:**(bool) if the key or index is required.<br>
-**convert:**(bool) if the key or index must be converted to str.<br>
-**default:**(str) default value if the key or index is not required.<br>
-**max_len:**(int) max length of the key or index.<br>
-**min_len:**(int) min length of the key or index.<br>
+**data:** The dict or list to be treated.<br>
+**key_or_index:**(Union[int,str]): The key or index to be treated.<br>
+**expected_value:**(str, optional): The expected value of the str. Defaults to None.<br>
+**inside:**(List[str], optional): The expected values of the str. Defaults to None.<br>
+**not_inside:**(List[str], optional): The not expected values of the str. Defaults to None.<br>
+**required:**(bool, optional): If the str is required. Defaults to True.<br>
+**convert:**(bool, optional): If the str must be converted. Defaults to False.<br>
+**default:**(str, optional): The default value if the str is not required. Defaults to None.<br>
+**max_len:**(int, optional): The max length of the str. Defaults to None.<br>
+**min_len:**(int, optional): The min length of the str. Defaults to None.<br>
 
 
 
@@ -53,16 +53,16 @@ print(age)
 ~~~
 ##### Args:
 
-**data:**(dict or list) data to be treated.<br>
-**key_or_index:**(int or str) key or index to be treated.<br>
-**expected_value:**(int) expected value of the key or index.<br>
-**inside:**(List[int]) list of values that the key or index must be inside.<br>
-**not_inside:**(List[int]) list of values that the key or index must not be inside.<br>
-**required:**(bool) if the key or index is required.<br>
-**convert:**(bool) if the key or index must be converted to int.<br>
-**default:**(int) default value if the key or index is not required.<br>
-**max:**(int) max value of the key or index.<br>
-**min:**(int) min value of the key or index.<br>
+**data:**(Union[dict,list]): The dict or list to be treated.<br>
+**key_or_index:**(Union[int,str]): The key or index to be treated.<br>
+**expected_value:**(int, optional): The expected value of the int. Defaults to None.<br>
+**inside:**(List[int], optional): The expected values of the int. Defaults to None.<br>
+**not_inside:**(List[int], optional): The not expected values of the int. Defaults to None.<br>
+**required:**(bool, optional): If the int is required. Defaults to True.<br>
+**convert:**(bool, optional): If the int must be converted. Defaults to True.<br>
+**default:**(int, optional): The default value if the int is not required. Defaults to None.<br>
+**max:**(int, optional): The max value of the int. Defaults to None.<br>
+**min:**(int, optional): The min value of the int. Defaults to None. <br>
 
 
 #### Getting Floats
@@ -84,16 +84,18 @@ print(age)
 ~~~
 ##### Args:
 
-**data:**(dict or list) data to be treated.<br>
-**key_or_index:**(int or str) key or index to be treated.<br>
-**expected_value:**(float) expected value of the key or index.<br>
-**inside:**(List[float]) list of values that the key or index must be inside.<br>
-**not_inside:**(List[float]) list of values that the key or index must not be inside.<br>
-**required:**(bool) if the key or index is required.<br>
-**convert:**(bool) if the key or index must be converted to float.<br>
-**default:**(int) default value if the key or index is not required.<br>
-**max:**(int) max value of the key or index.<br>
-**min:**(int) min value of the key or index.<br>
+**data:**(Union[dict,list]): The dict or list to be treated.<br>
+**key_or_index:**(Union[int,str]): The key or index to be treated.<br>
+**expected_value:**(float, optional): The expected value of the float. Defaults to None.<br>
+**inside:**(List[float], optional): The expected values of the float. Defaults to None.<br>
+**not_inside:**(List[float], optional): The not expected values of the float. Defaults to None<br>
+**required:**(bool, optional): If the float is required. Defaults to True.<br>
+**convert:** (bool, optional): If the float must be converted. Defaults to True.<br>
+**default:**(float, optional): The default value if the float is not required. Defaults to None<br>
+**max:**(float, optional): The max value of the float. Defaults to None.<br>
+**min:**(float, optional): The min value of the float. Defaults to None.<br>
+
+
 
 ### Getting List 
 
@@ -115,14 +117,14 @@ print(emails)
 ##### Args:
 
 **data:**(dict or list) data to be treated.<br>
-**key_or_index:**(int or str) key or index to be treated.<br>
-**expected_value:**(list) expected value of the key or index.<br>
-**inside:**(List[list]) list of values that the key or index must be inside.<br>
-**not_inside:**(List[list]) list of values that the key or index must not be inside.<br>
-**required:**(bool) if the key or index is required.<br>
-**default:**(list) default value if the key or index is not required.<br>
-**max_len:**(int) max length of the key or index.<br>
-**min_len:**(int) min length of the key or index.<br>    
+**key_or_index:** (Union[int,str]): The key or index to be treated.<br>
+**expected_value:**(list, optional): The expected value of the list. Defaults to None.<br>
+**inside:**(List[list], optional): The expected values of the list. Defaults to None.<br>
+**not_inside:**(List[list], optional): The not expected values of the list. Defaults to None.<br>
+**required:**(bool, optional): If the list is required. Defaults to True.<br>
+**default:** (list, optional): The default value if the list is not required. Defaults to None<br>
+**max_len:**(int, optional): The max length of the list. Defaults to None.<br>
+**min_len:**(int, optional): The min length of the list. Defaults to None.<br>    
 
 ### Getting Dicts
 
@@ -149,15 +151,15 @@ adress = PySchema.treat_and_get_dict(user_data, 'address')
 print(adress)
 ~~~
 ##### Args:
-**data:**(Union[dict,list]):The data to be treated.<br>
-**key_or_index:**(int or str) key or index to be treated.<br>
-**expected_value:** (dict) The expected value of the key or index.<br>
-**inside:** (List[dict]) The expected values of the key or index.<br>
-**not_inside:** (List[dict]) The expected values of the key or index.<br>
-**required:** (bool) If the key or index is required.<br>
-**default:** (dict) The default value if the key or index is not required.<br>
-**max_len:** (int) The maximum length of the leys in value.<br>
-**min_len:** (int) The minimum length of the keys in value.<br>
+**data:** (Union[dict,list]): The dict or list to be treated.<br>
+**key_or_index:**(Union[int,str]): The key or index to be treated.<br>
+**expected_value:**(dict, optional): The expected value of the dict. Defaults to None.<br>
+**inside:**(List[dict], optional): The expected values of the dict. Defaults to None.<br>
+**not_inside:**(List[dict], optional): The not expected values of the dict. Defaults to None.<br>
+**required:**(dict, optional): If the dict is required. Defaults to True.<br>
+**default:**(dict, optional): The default value if the dict is not required. Defaults to None.<br>
+**max_len:** (int, optional): The max length of the dict. Defaults to None.<br>
+**min_len:** (int, optional): The min length of the dict. Defaults to None.<br>
 
 ### Getting Any
 
@@ -189,5 +191,14 @@ adress = PySchema.treat_and_get_any(
 print(adress)
 ~~~
 ### Args:
-
+**data** (Union[dict,list]): The dict or list to be treated.
+**key_or_index** (Union[int,str]): The key or index to be treated.
+**expected_type** (type, optional): The expected type of the value. Defaults to None.
+**in_types** (List[Any], optional): The expected types of the value. Defaults to None.
+**expected_value** (Any, optional): The expected value of the value. Defaults to None.
+**inside** (list, optional): The expected values of the value. Defaults to None.
+**not_inside** (list, optional): The not expected values of the value. Defaults to None.
+**required** (bool, optional): If the value is required. Defaults to True.
+**convert** (bool, optional): If the value can be converted. Defaults to True.
+**default** (Any, optional): The default value if the value is not required. Defaults to None.
 ### Iterating over lists

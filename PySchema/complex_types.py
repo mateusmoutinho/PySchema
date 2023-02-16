@@ -3,6 +3,7 @@ from typing import Any,Union,List,Dict
 from PySchema.any_type import treat_and_get_any
 
 
+ 
 
 def treat_and_get_number(
     data:dict or list,
@@ -20,18 +21,19 @@ def treat_and_get_number(
 )-> int or float:
     """ This function is used to treat and get a number from a dict or list.
     Args:
-        data (dict or list): The dict or list to be treated.
-        key_or_index (int or str): The key or index to be treated.
+        data (Union[dict,list]): The dict or list to be treated.
+        key_or_index (Union[int,str]): The key or index to be treated.
         expected_type (type): The expected type of the value.
-        expected_value (float or int, optional): The expected value of the value. Defaults to None.
+        expected_value (Union[float,int], optional): The expected value of the value. Defaults to None.
         inside (list, optional): The expected values of the value. Defaults to None.
         not_inside (list, optional): The not expected values of the value. Defaults to None.
         required (bool, optional): If the value is required. Defaults to True.
         convert (bool, optional): If the value can be converted. Defaults to True.
         default (Any, optional): The default value if the value is not required. Defaults to None.
-        max (float or int, optional): The max value of the value. Defaults to None.
-        min (float or int, optional): The min value of the value. Defaults to None.
-    
+        max (Union[float,int], optional): The max value of the value. Defaults to None.
+        min (Union[float,int], optional): The min value of the value. Defaults to None.
+    Returns:
+        Union[int,float]: The value treated.    
     """
     value = treat_and_get_any(
         data=data,
@@ -81,8 +83,8 @@ def treat_and_get_iterable(
 )-> list or str:
     """ This function is used to treat and get a iterable from a dict or list.
     Args:
-        data (dict or list): The dict or list to be treated.
-        key_or_index (int or str): The key or index to be treated.
+        data (Union[dict,list]): The dict or list to be treated.
+        key_or_index (Union[int,str]): The key or index to be treated.
         expected_type (type): The expected type of the value.
         expected_value (Any, optional): The expected value of the value. Defaults to None.
         inside (list, optional): The expected values of the value. Defaults to None.
@@ -92,6 +94,8 @@ def treat_and_get_iterable(
         default (Any, optional): The default value if the value is not required. Defaults to None.
         max_len (int, optional): The max length of the value. Defaults to None.
         min_len (int, optional): The min length of the value. Defaults to None.
+    Returns:
+        Union[list,str]: The value treated.
     """
     
     value = treat_and_get_any(
