@@ -1,6 +1,6 @@
 from typing import Any,Union,List,Dict
 from PySchema.complex_types import treat_and_get_iterable,treat_and_get_number
-
+from PySchema.any_types import treat_and_get_any
 
 
 
@@ -171,6 +171,39 @@ def treat_and_get_int(
         default=default,
         max=max,
         min=min
+    )
+
+
+def treat_and_get_bool(
+    data: Union[dict,list],
+    key_or_index:Union[int,str],
+    expected_value:bool=None,
+    required:bool=True,
+    convert:bool=True,
+    default:int=None,
+)-> bool:
+    """This function is used to treat and get a int from a dict or list.
+
+    Args:
+    
+        data (Union[dict,list]): The dict or list to be treated.
+        key_or_index (Union[int,str]): The key or index to be treated.
+        expected_value (bool, optional): The expected value of the bool. Defaults to None.
+        required (bool, optional): If the bool is required. Defaults to True.
+        convert (bool, optional): If the bool must be converted. Defaults to True.
+        default (bool, optional): The default value if the bool is not required. Defaults to None.
+    
+    Returns:
+        bool: The treated bool.
+     """
+    return treat_and_get_any(
+        data=data,
+        key_or_index=key_or_index,
+        expected_type=bool,
+        expected_value=expected_value,
+        required=required,
+        convert=convert,
+        default=default
     )
 
 

@@ -1,15 +1,14 @@
 import PySchema
 
-
-
 user_data = {
-    'name': 3,
+    'name': 'John',
+    'age': 20,
+    'single': 'ss',
 }
 
-
-try:
-    name = PySchema.treat_and_get_str(user_data, 'name')
-    print(name)
-except PySchema.PySchemaException as e:
-    print(e.props)
-    
+single = PySchema.treat_and_get_bool(
+    data=user_data,
+    key_or_index='single',
+    convert=False
+)
+print(single)

@@ -1,6 +1,6 @@
 from PySchema.exceptions import PySchemaException
 from typing import Any,Union,List,Dict
-from PySchema.any_type import treat_and_get_any
+from PySchema.any_types import treat_and_get_any
 
 
  
