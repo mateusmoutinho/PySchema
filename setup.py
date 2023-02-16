@@ -11,6 +11,7 @@ setup(
     license='MIT',
     author='Mateus Moutinho',
     author_email='mateusmoutinho01@gmial.com',
+    keywords='schema validation',
     description=''
 )
 
