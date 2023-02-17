@@ -2,7 +2,7 @@ from PySchema.exceptions import PySchemaException
 from typing import Any
 
 
-def check_type(element:Any,expected_type:type=None,in_types:list=None):
+def check_type(data:Any,expected_type:type=None,in_types:list=None):
     """Check if element is instance of expected_type or in_types
     Args:
         element (Any): element to check
@@ -17,13 +17,13 @@ def check_type(element:Any,expected_type:type=None,in_types:list=None):
         raise Exception('expected_type or in_types is required')
     
     for expected_type in in_types:
-        if isinstance(element,expected_type):
+        if isinstance(data,expected_type):
             return True
     raise PySchemaException({
         'type': 'TypeError',
-        'element': element,
+        'data': data,
         'expected_type': expected_type,
-        'menssage': f"element:'{element}' is not  '{in_types[0].__name__}'"
+        'menssage': f"element:'{data}' is not  '{in_types[0].__name__}'"
     })
 
 
