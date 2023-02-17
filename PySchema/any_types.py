@@ -29,6 +29,7 @@ def treat_and_get_any(
         required (bool, optional): If the value is required. Defaults to True.
         convert (bool, optional): If the value can be converted. Defaults to False.
         default (Any, optional): The default value if the value is not required. Defaults to None.    
+        treater (Callable, optional): A function to treat the value. Defaults to None.
     Returns:
         Any: The value treated.
     """

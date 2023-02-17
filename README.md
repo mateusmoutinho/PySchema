@@ -73,6 +73,8 @@ print(name)
 **required:**(bool, optional): If the str is required. Defaults to True.<br>
 **convert:**(bool, optional): If the str must be converted. Defaults to False.<br>
 **default:**(str, optional): The default value if the str is not required. Defaults to None.<br>
+**treater (Callable, optional):** A function to treat the value. Defaults to None.<br>
+
 **max_len:**(int, optional): The max length of the str. Defaults to None.<br>
 **min_len:**(int, optional): The min length of the str. Defaults to None.<br>
 
@@ -104,6 +106,8 @@ print(age)
 **required:**(bool, optional): If the int is required. Defaults to True.<br>
 **convert:**(bool, optional): If the int must be converted. Defaults to True.<br>
 **default:**(int, optional): The default value if the int is not required. Defaults to None.<br>
+**treater (Callable, optional):** A function to treat the value. Defaults to None.<br>
+
 **max:**(int, optional): The max value of the int. Defaults to None.<br>
 **min:**(int, optional): The min value of the int. Defaults to None. <br>
 
@@ -130,6 +134,7 @@ print(single)
 **required (bool, optional):** If the bool is required. Defaults to True.<br>
 **convert (bool, optional):** If the bool must be converted. Defaults to True.<br>
 **default (bool, optional):** The default value if the bool is not required. Defaults to None.<br>
+**treater (Callable, optional):** A function to treat the value. Defaults to None.<br>
 
 
 
@@ -160,6 +165,8 @@ print(age)
 **required:**(bool, optional): If the float is required. Defaults to True.<br>
 **convert:** (bool, optional): If the float must be converted. Defaults to True.<br>
 **default:**(float, optional): The default value if the float is not required. Defaults to None<br>
+**treater (Callable, optional):** A function to treat the value. Defaults to None.<br>
+
 **max:**(float, optional): The max value of the float. Defaults to None.<br>
 **min:**(float, optional): The min value of the float. Defaults to None.<br>
 
@@ -191,6 +198,8 @@ print(emails)
 **not_inside:**(List[list], optional): The not expected values of the list. Defaults to None.<br>
 **required:**(bool, optional): If the list is required. Defaults to True.<br>
 **default:** (list, optional): The default value if the list is not required. Defaults to None<br>
+**treater (Callable, optional):** A function to treat the value. Defaults to None.<br>
+
 **max_len:**(int, optional): The max length of the list. Defaults to None.<br>
 **min_len:**(int, optional): The min length of the list. Defaults to None.<br>    
 
@@ -226,6 +235,8 @@ print(adress)
 **not_inside:**(List[dict], optional): The not expected values of the dict. Defaults to None.<br>
 **required:**(dict, optional): If the dict is required. Defaults to True.<br>
 **default:**(dict, optional): The default value if the dict is not required. Defaults to None.<br>
+**treater (Callable, optional):** A function to treat the value. Defaults to None.<br>
+
 **max_len:** (int, optional): The max length of the dict. Defaults to None.<br>
 **min_len:** (int, optional): The min length of the dict. Defaults to None.<br>
 
@@ -269,7 +280,7 @@ print(adress)
 **required** (bool, optional): If the value is required. Defaults to True.<br>
 **convert** (bool, optional): If the value can be converted. Defaults to False.<br>
 **default** (Any, optional): The default value if the value is not required. Defaults to None.<br>
-
+**treater (Callable, optional):** A function to treat the value. Defaults to None.<br>
 
 ### Iterating over lists
 
