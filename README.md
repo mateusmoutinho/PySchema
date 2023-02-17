@@ -290,10 +290,56 @@ user_data = {
     }
 }
 emails = PySchema.treat_and_get_list(data=user_data,key_or_index='emails')
-for index,value in enumerate(emails):
+for index in range(len(emails)):
     current_email = PySchema.treat_and_get_str(data=emails,key_or_index=index)
     print(current_email)
 ~~~
+
+if you prefer an Function aproach you can make like these:
+~~~python
+import PySchema
+user_data = {
+    'name': 'John',
+    'age': 60.4,
+    'emails': ['John@myemail.cmm', 'John2@myemail.com'],
+    'address': {
+        'street': 'Rua 1',
+        'number': 10,
+        'city': 'São Paulo',
+        'state': 'SP',
+    }
+}
+emails = PySchema.treat_and_get_list(data=user_data,key_or_index='emails')
+PySchema.treat_and_get_all(
+    data=emails,
+    callable=lambda data,index: PySchema.treat_and_get_str(
+        data=data,
+        key_or_index=index,
+        min_len=10
+    )
+)
+~~~
+or if you need an procedural aproach , you can make like these:
+
+~~~python
+
+import PySchema
+user_data = {
+    'name': 'John',
+    'age': 60.4,
+    'emails': ['John@myemail.cmm', 'John2@myemail.com','ss'],
+    'address': {
+        'street': 'Rua 1',
+        'number': 10,
+        'city': 'São Paulo',
+        'state': 'SP',
+    }
+}
+emails = PySchema.treat_and_get_list(data=user_data,key_or_index='emails')
+for email in emails:
+    PySchema.check_type(email,str)
+~~~
+
 
 #### Dealing with dict in lists 
 You can tread dicts inside least following the exemple:

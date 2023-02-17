@@ -6,4 +6,5 @@ from PySchema.basic_types import treat_and_get_bool
 from PySchema.basic_types import treat_and_get_list
 from PySchema.basic_types import treat_and_get_dict
 from PySchema.extras import check_type
+from PySchema.for_all import treat_and_get_all
 from PySchema.exceptions import PySchemaException
