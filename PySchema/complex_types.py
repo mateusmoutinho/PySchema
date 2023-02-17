@@ -54,7 +54,7 @@ def treat_and_get_number(
     if value:
         if max and value > max:
             raise PySchemaException({
-                'type': 'ValueError',
+                'type': 'MaxValueError',
                 'key_or_index': key_or_index,
                 'data': data,
                 'max': max,
@@ -62,7 +62,7 @@ def treat_and_get_number(
             })
         if min and value < min:
             raise  PySchemaException({
-                'type': 'ValueError',
+                'type': 'MinValueError',
                 'key_or_index': key_or_index,
                 'data': data,
                 'min': min,
@@ -120,7 +120,7 @@ def treat_and_get_iterable(
     if value:
         if max_len and len(value) > max_len:
             raise  PySchemaException({
-                'type': 'ValueError',
+                'type': 'MaxLenError',
                 'key_or_index': key_or_index,
                 'data': data,
                 'max_len': max_len,
@@ -128,7 +128,7 @@ def treat_and_get_iterable(
             })
         if min_len and len(value) < min_len:
             raise PySchemaException({
-                'type': 'ValueError',
+                'type': 'MinLenError',
                 'key_or_index': key_or_index,
                 'data': data,
                 'min_len': min_len,

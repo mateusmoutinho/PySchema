@@ -47,7 +47,7 @@ def treat_and_get_any(
 
         elif required:
             raise  PySchemaException({
-                'type': 'KeyError',
+                'type': 'NotFountError',
                 'key_or_index': key_or_index,
                 'data': data,
                 'menssage': f"#key#:'{key_or_index}' not found in #data# '{data}'",
@@ -70,7 +70,7 @@ def treat_and_get_any(
             data[key_or_index] = element
         except ValueError:  
             raise PySchemaException({
-                'type': 'ValueError',
+                'type': 'NotConvertError',
                 'key_or_index': key_or_index,
                 'data': data,
                 'expected_type': expected_type,
@@ -80,7 +80,7 @@ def treat_and_get_any(
  
     if expected_value and element != expected_value:
         raise PySchemaException({
-            'type': 'ValueError',
+            'type': 'NotEqualError',
             'key_or_index': key_or_index,
             'data': data,
             'expected_value': expected_value,
@@ -89,7 +89,7 @@ def treat_and_get_any(
     
     if inside and element not in inside:
         raise PySchemaException({
-            'type': 'ValueError',
+            'type': 'NotInError',
             'key_or_index': key_or_index,
             'data': data,
             'inside': inside,
@@ -98,7 +98,7 @@ def treat_and_get_any(
     
     if not_inside and element in not_inside:
         raise PySchemaException({
-            'type': 'ValueError',
+            'type': 'InError',
             'key_or_index': key_or_index,
             'data': data,
             'not_inside': not_inside,
@@ -117,7 +117,7 @@ def treat_and_get_any(
     if in_types:
         if not any([isinstance(element, type_) for type_ in in_types]):
             raise PySchemaException({
-                'type': 'TypeError',
+                'type': 'InTypeError',
                 'key_or_index': key_or_index,
                 'data': data,
                 'in_types': in_types,

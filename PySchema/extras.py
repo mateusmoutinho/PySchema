@@ -36,7 +36,7 @@ def ensure_not_expected_keys_is_present(data:dict,expected_keys:list):
     for key in data.keys():
         if key not in expected_keys:
             raise PySchemaException({
-                'type': 'KeyError',
+                'type': 'NotExpectedKeyError',
                 'data': data,
                 'key_or_index': key,
                 'expected_keys': expected_keys,
