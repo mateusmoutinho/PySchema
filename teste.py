@@ -3,7 +3,7 @@ import PySchema
 
 user_data = {
     'name': 'John',
-    'age': 60.4,
+    'age': 'aa',
     'emails': ['John@myemail.cmm', 'John2@myemail.com','ss'],
     'address': {
         'street': 'Rua 1',
@@ -53,4 +53,4 @@ def treat_user_data(user_data):
 try:
     user_data = treat_user_data(user_data)
 except PySchema.PySchemaException as e:
-    print(e.props)
+    print(e.props['menssage']) 
