@@ -347,34 +347,3 @@ for email in emails:
 ~~~
 
 
-#### Dealing with dict in lists 
-You can tread dicts inside least following the exemple:
-
-~~~python
-
-import PySchema
-
-
-user_data = {
-    'name': 'John',
-    'age': 60.4,
-    'emails': ['John@myemail.cmm', 'John2@myemail.com'],
-    'address': [{
-        'street': 'Rua 1',
-        'number': 10,
-        'city': 'São Paulo',
-        'state': 'SP',
-    }]
-}
-
-adresss = PySchema.treat_and_get_list(data=user_data,key_or_index='address')
-for index,value in enumerate(adresss):
-    current_adress = PySchema.treat_and_get_dict(data=adresss,key_or_index=index)
-    
-    street = PySchema.treat_and_get_str(data=current_adress,key_or_index='street')
-    number = PySchema.treat_and_get_int(data=current_adress,key_or_index='number')
-    city = PySchema.treat_and_get_str(data=current_adress,key_or_index='city')
-    state = PySchema.treat_and_get_str(data=current_adress,key_or_index='state')
-    print(street,number,city,state)
-~~~
-
