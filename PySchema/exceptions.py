@@ -2,7 +2,9 @@ from typing import Any
 
 class PySchemaException(Exception):
     def __init__(self,props:dict):
-        data = props['data']
+        data = None
+        if 'data' in props.keys():
+            data = props['data']
         
         if isinstance(data,dict):
             props['menssage'] = props['menssage'].replace('#key#','key').replace('#data#','dict')

@@ -1,13 +1,10 @@
-import PySchema
-
-user_data = {
-    'name': 'John',
-    'age': 20,
-    'single': 'aa',
+import PySchema 
+from PySchema.exceptions import PySchemaException
+values= {
+    'emails':['email1','email2','email3',10]
 }
 
-single = PySchema.treat_and_get_bool(
-    data=user_data,
-    key_or_index='single',
-)
-print(user_data)
+emails = PySchema.treat_and_get_list(values,'emails')
+for email in emails:
+    PySchema.check_type(email,str)
+    print(email)

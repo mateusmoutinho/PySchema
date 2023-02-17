@@ -10,11 +10,11 @@ def treat_and_get_number(
     key_or_index:int or str,
     expected_type:type,
     expected_value:float or int=None,
-    inside:list=None,
-    not_inside:list=None,
+    inside:List[Union[list,float]]=None,
+    not_inside:List[Union[list,float]]=None,
     required:bool=True,
     convert:bool=True,
-    default:Any=None,
+    default:Union[int,float]=None,
     max:float or int=None,
     min:float or int=None
 
@@ -80,7 +80,7 @@ def treat_and_get_iterable(
     default:Any=None,
     max_len:int=None,
     min_len:int=None
-)-> list or str:
+)-> Union[list,str,dict,tuple,set]:
     """ This function is used to treat and get a iterable from a dict or list.
     Args:
         data (Union[dict,list]): The dict or list to be treated.
