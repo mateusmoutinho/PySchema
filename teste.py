@@ -16,7 +16,9 @@ user_data = {
 
 
 def treat_adress(adress):
-    street = PySchema.treat_and_get_str(data=adress,key_or_index='street')
+    street = PySchema.treat_and_get_str(data=adress,key_or_index='street',
+    treater=lambda x: x.upper()
+    )
     number = PySchema.treat_and_get_int(data=adress,key_or_index='number')
     city = PySchema.treat_and_get_str(data=adress, key_or_index='city')
     state = PySchema.treat_and_get_str(data=adress,key_or_index='state')
@@ -26,7 +28,6 @@ def treat_adress(adress):
 adrress = PySchema.treat_and_get_dict(
     data=user_data,
     key_or_index='address',
-    expected_type=dict,
     treater=treat_adress
 )
 
