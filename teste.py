@@ -1,17 +1,6 @@
 
 import PySchema
 
-user_data = {
-    'name': 'John',
-    'age': 'aa',
-    'emails': ['John@myemail.cmm', 'John2@myemail.com','ss'],
-    'address': {
-        'street': 'Rua 1',
-        'number': 10,
-        'city': 'São Paulo',
-        'state': 'SP'
-    }
-}
 
 
 
@@ -49,6 +38,17 @@ def treat_user_data(user_data):
     )
     return user_data
 
+user_data = {
+    'name': 'John',
+    'age': 24,
+    'emails': ['John@myemail.cmm', 'John2@myemail.com','ss'],
+    'address': {
+        'street': 'Rua 1',
+        'number': 10,
+        'city': 'São Paulo',
+        'state': 'SP'
+    }
+}
 
 try:
     user_data = treat_user_data(user_data)
