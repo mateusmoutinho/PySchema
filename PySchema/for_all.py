@@ -1,7 +1,7 @@
 from typing import Union,Any,Callable
 
 
-def treat_and_get_all(data: Union[dict,list],callable:Callable):
+def treat_and_get_all(data: Union[dict,list],callable:Callable)->Union[dict,list]:
     """
     Iterate over a dict or list and call a callable for each element
     Args:
@@ -15,3 +15,4 @@ def treat_and_get_all(data: Union[dict,list],callable:Callable):
     elif isinstance(data,list):
         for index in range(len(data)):
             callable(data,index)
+    return data
