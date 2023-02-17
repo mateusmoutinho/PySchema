@@ -59,10 +59,6 @@ def treat_and_get_any(
         convert = False
 
 
-    if treater:
-        element = treater(element)
-        data[key_or_index] = element
-    
 
     if convert and expected_type:
         try:
@@ -123,5 +119,11 @@ def treat_and_get_any(
                 'in_types': in_types,
                 'menssage': f"Value: '{element}' of #key#: '{key_or_index}'  is not a '{in_types}' on #data# '{data}'",
             })
+    
+
+    if treater:
+        element = treater(element)
+        data[key_or_index] = element
+    
     return element
     
