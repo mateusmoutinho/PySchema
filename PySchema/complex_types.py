@@ -1,5 +1,5 @@
 from PySchema.exceptions import PySchemaException
-from typing import Any,Union,List,Dict
+from typing import Any,Union,List,Dict,Callable
 from PySchema.any_types import treat_and_get_any
 
 
@@ -15,8 +15,9 @@ def treat_and_get_number(
     required:bool=True,
     convert:bool=True,
     default:Union[int,float]=None,
+    treater:Callable=None,
     max:float or int=None,
-    min:float or int=None
+    min:float or int=None,
 
 )-> int or float:
     """ This function is used to treat and get a number from a dict or list.
@@ -30,8 +31,10 @@ def treat_and_get_number(
         required (bool, optional): If the value is required. Defaults to True.
         convert (bool, optional): If the value can be converted. Defaults to True.
         default (Any, optional): The default value if the value is not required. Defaults to None.
+        treater (Callable, optional): The function to treat the value. Defaults to None.
         max (Union[float,int], optional): The max value of the value. Defaults to None.
         min (Union[float,int], optional): The min value of the value. Defaults to None.
+
     Returns:
         Union[int,float]: The value treated.    
     """
@@ -45,7 +48,8 @@ def treat_and_get_number(
         not_inside=not_inside,
         required=required,
         convert=convert,
-        default=default
+        default=default,
+        treater=treater,
     )
     if value:
         if max and value > max:
@@ -78,6 +82,7 @@ def treat_and_get_iterable(
     required:bool=True,
     convert:bool=False,
     default:Any=None,
+    treater:Callable=None,
     max_len:int=None,
     min_len:int=None
 )-> Union[list,str,dict,tuple,set]:
@@ -92,6 +97,7 @@ def treat_and_get_iterable(
         required (bool, optional): If the value is required. Defaults to True.
         convert (bool, optional): If the value can be converted. Defaults to False.
         default (Any, optional): The default value if the value is not required. Defaults to None.
+        treater (Callable, optional): The function to treat the value. Defaults to None.
         max_len (int, optional): The max length of the value. Defaults to None.
         min_len (int, optional): The min length of the value. Defaults to None.
     Returns:
@@ -108,7 +114,8 @@ def treat_and_get_iterable(
         not_inside=not_inside,
         required=required,
         convert=convert,
-        default=default
+        default=default,
+        treater=treater,
     )
     if value:
         if max_len and len(value) > max_len:

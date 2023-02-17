@@ -1,4 +1,4 @@
-from typing import Any,Union,List,Dict
+from typing import Any,Union,List,Dict,Callable
 from PySchema.complex_types import treat_and_get_iterable,treat_and_get_number
 from PySchema.any_types import treat_and_get_any
 
@@ -12,6 +12,7 @@ def treat_and_get_dict(
     not_inside:List[dict]=None,
     required:dict=True,
     default:dict=None,
+    treater:Callable=None,
     max_len:int=None,
     min_len:int=None
 )-> dict:
@@ -24,6 +25,7 @@ def treat_and_get_dict(
         not_inside (List[dict], optional): The not expected values of the dict. Defaults to None.
         required (dict, optional): If the dict is required. Defaults to True.
         default (dict, optional): The default value if the dict is not required. Defaults to None.
+        treater (Callable, optional): The function to treat the value. Defaults to None.
         max_len (int, optional): The max length of the dict. Defaults to None.
         min_len (int, optional): The min length of the dict. Defaults to None.
     Returns:
@@ -39,6 +41,7 @@ def treat_and_get_dict(
         required=required,
         convert=False,
         default=default,
+        treater=treater,
         max_len=max_len,
         min_len=min_len
     )
@@ -52,6 +55,7 @@ def treat_and_get_str(
     required:bool=True,
     convert:bool=False,
     default:str=None,
+    treater:Callable=None,
     max_len:int=None,
     min_len:int=None
 )-> str:
@@ -67,6 +71,7 @@ def treat_and_get_str(
         required (bool, optional): If the str is required. Defaults to True.
         convert (bool, optional): If the str must be converted. Defaults to False.
         default (str, optional): The default value if the str is not required. Defaults to None.
+        treater (Callable, optional): The function to treat the value. Defaults to None.
         max_len (int, optional): The max length of the str. Defaults to None.
         min_len (int, optional): The min length of the str. Defaults to None.
     
@@ -84,6 +89,7 @@ def treat_and_get_str(
         required=required,
         convert=convert,
         default=default,
+        treater=treater,
         max_len=max_len,
         min_len=min_len
         
@@ -97,6 +103,7 @@ def treat_and_get_list(
     not_inside:List[list]=None,
     required:bool=True,
     default:list=None,
+    treater:Callable=None,
     max_len:int=None,
     min_len:int=None
 )-> list:
@@ -109,6 +116,7 @@ def treat_and_get_list(
         not_inside (List[list], optional): The not expected values of the list. Defaults to None.
         required (bool, optional): If the list is required. Defaults to True.
         default (list, optional): The default value if the list is not required. Defaults to None.
+        treater (Callable, optional): The function to treat the value. Defaults to None.
         max_len (int, optional): The max length of the list. Defaults to None.
         min_len (int, optional): The min length of the list. Defaults to None.
     Returns:
@@ -124,6 +132,7 @@ def treat_and_get_list(
         required=required,
         convert=False,
         default=default,
+        treater=treater,
         max_len=max_len,
         min_len=min_len
     )
@@ -138,6 +147,7 @@ def treat_and_get_int(
     required:bool=True,
     convert:bool=True,
     default:int=None,
+    treater:Callable=None,
     max:int=None,
     min:int=None
 )-> int:
@@ -153,6 +163,7 @@ def treat_and_get_int(
         required (bool, optional): If the int is required. Defaults to True.
         convert (bool, optional): If the int must be converted. Defaults to True.
         default (int, optional): The default value if the int is not required. Defaults to None.
+        treater (Callable, optional): The function to treat the value. Defaults to None.
         max (int, optional): The max value of the int. Defaults to None.
         min (int, optional): The min value of the int. Defaults to None. 
     
@@ -169,6 +180,7 @@ def treat_and_get_int(
         required=required,
         convert=convert,
         default=default,
+        treater=treater,
         max=max,
         min=min
     )
@@ -181,6 +193,7 @@ def treat_and_get_bool(
     required:bool=True,
     convert:bool=True,
     default:int=None,
+    treater:Callable=None
 )-> bool:
     """This function is used to treat and get a int from a dict or list.
 
@@ -192,7 +205,7 @@ def treat_and_get_bool(
         required (bool, optional): If the bool is required. Defaults to True.
         convert (bool, optional): If the bool must be converted. Defaults to True.
         default (bool, optional): The default value if the bool is not required. Defaults to None.
-    
+        treater (Callable, optional): The function to treat the value. Defaults to None.
     Returns:
         bool: The treated bool.
      """
@@ -203,7 +216,8 @@ def treat_and_get_bool(
         expected_value=expected_value,
         required=required,
         convert=convert,
-        default=default
+        default=default,
+        treater=treater
     )
 
 
@@ -216,6 +230,7 @@ def treat_and_get_float(
     required:bool=True,
     convert:bool=True,
     default:float=None,
+    treater:Callable=None,
     max:float=None,
     min:float=None
 )-> float:
@@ -229,6 +244,7 @@ def treat_and_get_float(
         required (bool, optional): If the float is required. Defaults to True.
         convert (bool, optional): If the float must be converted. Defaults to True.
         default (float, optional): The default value if the float is not required. Defaults to None.
+        treater (Callable, optional): The function to treat the value. Defaults to None.
         max (float, optional): The max value of the float. Defaults to None.
         min (float, optional): The min value of the float. Defaults to None.
     Returns:
@@ -245,6 +261,7 @@ def treat_and_get_float(
         required=required,
         convert=convert,
         default=default,
+        treater=treater,
         max=max,
         min=min
 

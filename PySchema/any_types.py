@@ -1,5 +1,5 @@
 from PySchema.exceptions import PySchemaException
-from typing import Any,Union,List,Dict
+from typing import Any,Union,List,Dict,Callable
 
 
 
@@ -13,7 +13,8 @@ def treat_and_get_any(
     not_inside: list=None,
     required:bool=True,
     convert:bool=False,
-    default:Any=None
+    default:Any=None,
+    treater:Callable=None,
 )-> Any:
     """This function is used to treat and get a value from a dict or list.
     
@@ -52,12 +53,15 @@ def treat_and_get_any(
             })
        
 
+    #for avoid convert with lists
     if convert and in_types:
         convert = False
 
-    if default and expected_value:
-        default = None
 
+    if treater:
+        element = treater(element)
+        data[key_or_index] = element
+    
 
     if convert and expected_type:
         try:
