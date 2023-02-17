@@ -9,8 +9,13 @@ user_data = {
         'number': 10,
         'city': 'São Paulo',
         'state': 'SP',
-    }
+    },
+    'teste':2
 }
-emails = PySchema.treat_and_get_list(data=user_data,key_or_index='emails')
-for email in emails:
-    PySchema.check_type(email,str)
+try:
+    PySchema.ensure_not_expected_keys_is_present(
+        data=user_data,
+        expected_keys=['name','age','emails','address']
+    )
+except PySchema.PySchemaException as e:
+    print(e.props)
